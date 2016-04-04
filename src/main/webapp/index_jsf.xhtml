@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <head jsf:id="head">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>gedoplan, PlainHTML-JSF</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,600,700,800' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300,200' rel='stylesheet' type='text/css'/>
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
+        <link href="assets/css/responsive.css" rel="stylesheet" media="screen" type="text/css"/>
+    </head>
+
+    <body jsf:id="body">
+        <div class="header">
+            <div class="container">
+                <div class="logo-menu">
+                    <div class="logo">
+                        <h1><a href="#">PlainHTML-JSF</a></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="menu" id="navigation">
+                <form jsf:id="nav-form">
+                    <ul>
+                        <li><a jsf:action="index">Pass-Through-Elements</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="color-border">
+        </div>
+
+        <div class="desc" id="contact">
+            <div class="container">
+                <h2 class="desc">Beispiel Formular Passthrough Attributes</h2>
+                <div class="contact-section">
+                    <h:form id="form">
+                        <h:inputText pt:placeholder="Name" value="#{formBean.name}"/>
+                        <h:inputText pt:type="email" pt:placeholder="Email" value="#{formBean.mail}"/>
+                        <h:inputTextarea pt:placeholder="Message" rows="6" value="#{formBean.message}"></h:inputTextarea>
+                        <h:commandButton type="submit" value="Send Message" class="submit" id="submit" action="#{formBean.submit()}">
+                            <f:ajax render="messages" execute="form"/>
+                        </h:commandButton>
+                        <span class="messages" jsf:id="messages">
+                            <h:messages globalOnly="true" showDetail="false" />
+                        </span>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <div class="color-border">
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="infooter">
+                    <p>gedoplan, 2016</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+    </body>
+</html>
